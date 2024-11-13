@@ -266,8 +266,10 @@
         <li><a th:href="@{/cart/viewCart}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         <li><a th:href="@{/seller/sellerRegistration}"><i class="fas fa-store"></i> Become a Seller</a></li>
         <li class="logout-home">
-            <button onclick="window.location.href='/api/buyerhome'">Home</button>
-            <button onclick="window.location.href='/buyer/login'">Logout</button>
+			<li><a th:href="@{/pro/home}"> Home</a></li>
+			<li><a th:href="@{/buyer/login}"> Logout</a></li>
+           <!-- <button onclick="window.location.href='/api/buyerhome'">Home</button>-->
+           <!-- <button onclick="window.location.href='/buyer/login'">Logout</button>-->
         </li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">
