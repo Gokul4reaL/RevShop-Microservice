@@ -1,11 +1,9 @@
 package com.wishlistservice.Controller;
 
-import com.wishlistservice.config.RestTemplateConfig;
 import com.wishlistservice.model.Product;
 import com.wishlistservice.model.User;
 import com.wishlistservice.model.WishlistItem;
 import com.wishlistservice.service.WishlistService;
-//import com.wishlistservice.service.ProductService;
 import com.wishlistservice.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,64 +22,51 @@ public class WishlistController {
     @Autowired
     private WishlistService wishlistService;
 
-    //@Autowired
-    //private ProductService productService;
-
     @Autowired
     private RestTemplate restTemplate;
+
     @Autowired
     private UserRepository userRepository;
 
+    private static final String GATEWAY_BASE_URL = "http://localhost:9090";
+
     @PostMapping("/wishlist/add")
     public String addToWishlist(@RequestParam("productId") Long productId, HttpSession session) {
-//        String email = (String) session.getAttribute("email");
-//        if (email == null) {
-//            return "redirect:/login";  // Redirect to login if the user is not logged in
-//        }
-    	String email = "ssubash2651@gmail.com";
-    	String url = "http://localhost:9090/pro/getProductById";
+        String email = "ssubash2651@gmail.com";
         Optional<User> user = userRepository.findByEmail(email);
+        
         if (user.isPresent()) {
-        	String url1 = url+"/"+productId;
-            Product product = restTemplate.getForObject(url1, Product.class);
+            String url = GATEWAY_BASE_URL + "/pro/getProductById/" + productId;
+            Product product = restTemplate.getForObject(url, Product.class);
             wishlistService.addProductToWishlist(user.get(), product);
         }
 
-        return "redirect:/wish/wishlist";
+        return "redirect:" + GATEWAY_BASE_URL + "/wish/wishlist";
     }
 
     @GetMapping("/wishlist")
     public String showWishlist(HttpSession session, Model model) {
-//        String email = (String) session.getAttribute("email");
-//
-//        if (email == null) {
-//            return "redirect:/login";  // Redirect to login if user is not logged in
-//        }
-    	String email = "ssubash2651@gmail.com";
+        String email = "ssubash2651@gmail.com";
         Optional<User> user = userRepository.findByEmail(email);
+
         if (user.isPresent()) {
             List<WishlistItem> wishlistItems = wishlistService.getWishlistByUser(user.get());
             model.addAttribute("wishlistItems", wishlistItems);
-            return "wishlist";  // Refer to wishlist.html template
+            return "wishlist";
         }
 
-        return "redirect:/login";
+        return "redirect:" + GATEWAY_BASE_URL + "/login";
     }
 
     @PostMapping("/wishlist/remove")
     public String removeFromWishlist(@RequestParam("productId") Long productId, HttpSession session) {
-//        String email = (String) session.getAttribute("email");
-          String email="ssubash2651@gmail.com";
-        if (email == null) {
-            return "redirect:/login";  // Redirect to login if user is not logged in
-        }
-
+        String email = "ssubash2651@gmail.com";
+        
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
             wishlistService.removeProductFromWishlist(user.get(), productId);
         }
 
-        return "redirect:/wish/wishlist";
-
+        return "redirect:" + GATEWAY_BASE_URL + "/wish/wishlist";
     }
 }

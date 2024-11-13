@@ -289,7 +289,7 @@ td img {
         <h2>RevShop</h2>
     </div>
     <div class="search-bar">
-        <form th:action="@{/api/searchall}" method="get">
+        <form th:action="@{/pro/searchall}" method="get">
             <input type="text" name="query" placeholder="Search for products..." required>
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
@@ -303,8 +303,10 @@ td img {
         <li><a th:href="@{/wish/wishlist}"><i class="fas fa-heart"></i> Wishlist</a></li>
         <li><a th:href="@{/seller/sellerRegistration}"><i class="fas fa-store"></i> Become a Seller</a></li>
         <li class="logout-home">
-            <button onclick="window.location.href='/api/buyerhome'">Home</button>
-            <button onclick="window.location.href='/buyer/login'">Logout</button>
+			<li><a th:href="@{/pro/home}">Home</a></li>
+			<li><a th:href="@{/buyer/login}">Logout</a></li>
+            <!--<button onclick="window.location.href='/api/buyerhome'">Home</button>
+            <button class="p-2" onclick="window.location.href='/buyer/login'">Logout</button>-->
         </li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">

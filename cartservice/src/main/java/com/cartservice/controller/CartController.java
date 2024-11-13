@@ -35,16 +35,20 @@ public class CartController {
 
     @PostMapping("/addToCart")
     public String addToCart(@RequestParam("productId") Long productId, @RequestParam("quantity") int quantity, HttpSession session) {
-        //String email = (String) session.getAttribute("email");
-    	//String email = "ssubash2651@gmail.com";
-    	Optional<Session> ses = sessionRepo.findById(1L);
-    	String email = ses.get().getEmail();
-		int value = ses.get().getValue();
-		if(value == 0)
-		{
-			return "redirect:http://localhost:9090/buyer/login";
-		}
-        System.out.println("in cart cntroller");
+		
+		 //String email = (String) session.getAttribute("email"); 
+    	//String email ="ssubash2651@gmail.com";
+    	 Optional<Session> ses = sessionRepo.findById(1L);
+		 String email = ses.get().getEmail(); int value = ses.get().getValue();
+		 if(value == 0) { 
+			 return "redirect:http://localhost:9090/buyer/login"; 
+			 }
+		 
+       
+      
+        if (email == null) {
+            return "redirect:/buyer/login";  // Redirect to login if not logged in
+        }
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
             Product product = productService.getProductById(productId);

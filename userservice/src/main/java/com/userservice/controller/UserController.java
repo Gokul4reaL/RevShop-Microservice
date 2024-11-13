@@ -113,7 +113,7 @@ public class UserController {
                     }
                     
                     response.put("status", "success");
-                    response.put("redirect", "/api/buyerhome");
+                    response.put("redirect", "/pro/home");
                     return response;
                 } else {
                 	response.put("status", "error");
