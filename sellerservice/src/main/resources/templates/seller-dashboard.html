@@ -205,11 +205,11 @@ body {
         <div class="sidebar">
             <div class="profile-section">
                 <img th:src="${session.loggedInSeller.image}" alt="Profile Picture" class="profile-pic">
-                 <h3>Hello, <span th:text="${session.loggedInSeller.lastName}"></span></h3>
+                 <h3>Hello, <span th:text="${session.loggedInSeller.firstName}"></span></h3>
                 
             </div>
             <ul class="sidebar-menu">
-                <li class="menu-item"><a th:href="@{/seller-dashboard}">Dashboard</a></li>
+                <li class="menu-item"><a th:href="@{/seller/seller-dashboard}">Dashboard</a></li>
                 <li class="menu-item dropdown">
                     <a href="#" class="dropdown-btn">Inventory</a>
                     <ul class="dropdown-content">

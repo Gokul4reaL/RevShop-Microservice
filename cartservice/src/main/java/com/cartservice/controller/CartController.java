@@ -36,7 +36,7 @@ public class CartController {
     @PostMapping("/addToCart")
     public String addToCart(@RequestParam("productId") Long productId, @RequestParam("quantity") int quantity, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	//String email = "psubha3108@gmail.com";
+    	//String email = "ssubash2651@gmail.com";
     	Optional<Session> ses = sessionRepo.findById(1L);
     	String email = ses.get().getEmail();
 		int value = ses.get().getValue();
@@ -60,7 +60,7 @@ public class CartController {
 //        if (email == null) {
 //            return "redirect:/login";
 //        }
-    	String email ="psubha3108@gmail.com";
+    	String email ="ssubash2651@gmail.com";
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
             List<CartItem> cartItems = cartService.getCartItemsByUser(user.get());
@@ -83,7 +83,7 @@ public class CartController {
     public String updateCartItemQuantity(@RequestParam("productId") Long productId,
                                          @RequestParam("increase") boolean increase, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	String email = "psubha3108@gmail.com";
+    	String email = "ssubash2651@gmail.com";
         if (email == null) {
             return "redirect:/login";
         }
@@ -100,7 +100,7 @@ public class CartController {
     @PostMapping("/remove")
     public String removeFromCart(@RequestParam("productId") Long productId, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	String email = "psubha3108@gmail.com";
+    	String email = "ssubash2651@gmail.com";
         if (email == null) {
             return "redirect:/buyer/login";
         }
@@ -117,7 +117,7 @@ public class CartController {
     @PostMapping("/save-for-later")
     public String saveForLater(@RequestParam("productId") Long productId, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	String email = "psubha3108@gmail.com";
+    	String email = "ssubash2651@gmail.com";
         if (email == null) {
             return "redirect:/login";
         }
@@ -135,7 +135,7 @@ public class CartController {
     @GetMapping("/move-to-cart")
     public String moveToCart(@RequestParam("productId") Long productId, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	String email = "psubha3108@gmail.com";
+    	String email = "ssubash2651@gmail.com";
         if (email != null) {
             Optional<User> user = userRepository.findByEmail(email);
             if (user.isPresent()) {
