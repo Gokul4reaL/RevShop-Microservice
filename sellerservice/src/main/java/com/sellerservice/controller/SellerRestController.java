@@ -23,7 +23,7 @@ public class SellerRestController {
 	@GetMapping("/getSeller")
 	public ResponseEntity<Seller> getSeller()
 	{
-		String email="psubha3108@gmail.com";
+		String email="ssubash2651@gmail.com";
 		Seller seller = sellerRepo.findByEmail(email);
 		return ResponseEntity.ok(seller);
 		

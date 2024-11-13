@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
-    // Additional configuration can be added here if needed
+    //Adding filters to allow only this orgin
 	@Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")

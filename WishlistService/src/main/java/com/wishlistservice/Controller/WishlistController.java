@@ -38,7 +38,7 @@ public class WishlistController {
 //        if (email == null) {
 //            return "redirect:/login";  // Redirect to login if the user is not logged in
 //        }
-    	String email = "psubha3108@gmail.com";
+    	String email = "ssubash2651@gmail.com";
     	String url = "http://localhost:9090/pro/getProductById";
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
@@ -57,7 +57,7 @@ public class WishlistController {
 //        if (email == null) {
 //            return "redirect:/login";  // Redirect to login if user is not logged in
 //        }
-    	String email = "psubha3108@gmail.com";
+    	String email = "ssubash2651@gmail.com";
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
             List<WishlistItem> wishlistItems = wishlistService.getWishlistByUser(user.get());
@@ -71,7 +71,7 @@ public class WishlistController {
     @PostMapping("/wishlist/remove")
     public String removeFromWishlist(@RequestParam("productId") Long productId, HttpSession session) {
 //        String email = (String) session.getAttribute("email");
-          String email="psubha3108@gmail.com";
+          String email="ssubash2651@gmail.com";
         if (email == null) {
             return "redirect:/login";  // Redirect to login if user is not logged in
         }

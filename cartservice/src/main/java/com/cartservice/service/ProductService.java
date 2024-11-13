@@ -92,8 +92,6 @@ public class ProductService {
 	}
 	public void deleteProduct(Long productId) {
 		repo.deleteById(productId);
-		// TODO Auto-generated method stub
-		
 	}
 
 	
