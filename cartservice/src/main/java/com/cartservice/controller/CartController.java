@@ -6,6 +6,8 @@ import com.cartservice.model.User;
 import com.cartservice.service.CartService;
 import com.cartservice.service.ProductService;
 import com.cartservice.model.Session;
+import com.cartservice.model.SellerSession;
+import com.cartservice.repository.SellerSessionRepository;
 import com.cartservice.repository.SessionRepository;
 import com.cartservice.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
@@ -32,6 +34,9 @@ public class CartController {
     
     @Autowired
     private SessionRepository sessionRepo;
+    
+    @Autowired
+    private SellerSessionRepository sellerSessionRepo;
 
     @PostMapping("/addToCart")
     public String addToCart(@RequestParam("productId") Long productId, @RequestParam("quantity") int quantity, HttpSession session) {
@@ -43,12 +48,11 @@ public class CartController {
 		 if(value == 0) { 
 			 return "redirect:http://localhost:9090/buyer/login"; 
 			 }
-		 
-       
-      
+		     
         if (email == null) {
             return "redirect:/buyer/login";  // Redirect to login if not logged in
         }
+    	 
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
             Product product = productService.getProductById(productId);
@@ -64,7 +68,13 @@ public class CartController {
 //        if (email == null) {
 //            return "redirect:/login";
 //        }
-    	String email ="ssubash2651@gmail.com";
+    	Optional<Session> ses = sessionRepo.findById(1L);
+		int value = ses.get().getValue();
+		String email = ses.get().getEmail();
+		if(value == 0)
+		{
+			return "redirect:http://localhost:9090/buyer/login";
+		}
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
             List<CartItem> cartItems = cartService.getCartItemsByUser(user.get());
@@ -87,8 +97,13 @@ public class CartController {
     public String updateCartItemQuantity(@RequestParam("productId") Long productId,
                                          @RequestParam("increase") boolean increase, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	String email = "ssubash2651@gmail.com";
-        if (email == null) {
+    	Optional<Session> ses = sessionRepo.findById(1L);
+		int value = ses.get().getValue();
+		String email = ses.get().getEmail();
+		if(value == 0)
+		{
+			return "redirect:http://localhost:9090/buyer/login";
+		}        if (email == null) {
             return "redirect:/login";
         }
 
@@ -104,9 +119,14 @@ public class CartController {
     @PostMapping("/remove")
     public String removeFromCart(@RequestParam("productId") Long productId, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	String email = "ssubash2651@gmail.com";
-        if (email == null) {
-            return "redirect:/buyer/login";
+    	Optional<Session> ses = sessionRepo.findById(1L);
+		int value = ses.get().getValue();
+		String email = ses.get().getEmail();
+		if(value == 0)
+		{
+			return "redirect:http://localhost:9090/buyer/login";
+		}        if (email == null) {
+            return "redirect:/login";
         }
 
         Optional<User> user = userRepository.findByEmail(email);
@@ -121,8 +141,13 @@ public class CartController {
     @PostMapping("/save-for-later")
     public String saveForLater(@RequestParam("productId") Long productId, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	String email = "ssubash2651@gmail.com";
-        if (email == null) {
+    	Optional<Session> ses = sessionRepo.findById(1L);
+		int value = ses.get().getValue();
+		String email = ses.get().getEmail();
+		if(value == 0)
+		{
+			return "redirect:http://localhost:9090/buyer/login";
+		}        if (email == null) {
             return "redirect:/login";
         }
 
@@ -139,8 +164,15 @@ public class CartController {
     @GetMapping("/move-to-cart")
     public String moveToCart(@RequestParam("productId") Long productId, HttpSession session) {
         //String email = (String) session.getAttribute("email");
-    	String email = "ssubash2651@gmail.com";
-        if (email != null) {
+    	Optional<Session> ses = sessionRepo.findById(1L);
+		int value = ses.get().getValue();
+		String email = ses.get().getEmail();
+		if(value == 0)
+		{
+			return "redirect:http://localhost:9090/buyer/login";
+		}        if (email == null) {
+            return "redirect:/login";
+        }        if (email != null) {
             Optional<User> user = userRepository.findByEmail(email);
             if (user.isPresent()) {
                 cartService.moveToCart(user.get(), productId);

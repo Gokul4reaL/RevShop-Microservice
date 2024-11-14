@@ -39,7 +39,7 @@ public class CartRestController {
 //            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 //        }
         
-        Optional<User> user = userRepository.findByEmail("ssubash2651@gmail.com");
+        Optional<User> user = userRepository.findByEmail("gravekrishna@gmail.com");
         if (user.isPresent()) {
             List<CartItem> cartItems = cartService.getCartItemsByUser(user.get());
             

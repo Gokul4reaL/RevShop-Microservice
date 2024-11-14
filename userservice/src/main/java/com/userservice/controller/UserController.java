@@ -104,12 +104,18 @@ public class UserController {
                     session.setAttribute("userId", user.getUserId());
                     session.setAttribute("email", verifiedEmail);
                     Optional<Session> ses = sessionRepo.findById(1L);
-                    if(ses.isPresent())
-                    {
-                    	Session sess = ses.get();
-                    	sess.setValue(1);
-                    	sess.setEmail(verifiedEmail);
+                    if(ses.isPresent()) {
+                        Session sess = ses.get();
+                        sess.setValue(1);
+                        sess.setEmail(verifiedEmail);
+                        System.out.println("Saving session to the database: " + sess);
                         sessionRepo.save(sess);
+                    } else {
+                        // If session record doesn't exist, create a new one
+                        Session newSession = new Session();
+                        newSession.setValue(1);
+                        newSession.setEmail(verifiedEmail);
+                        sessionRepo.save(newSession);
                     }
                     
                     response.put("status", "success");
@@ -253,6 +259,41 @@ public class UserController {
         }
         return response;
     }
+    
+//    @GetMapping("/logout")
+//    @ResponseBody
+//    public Map<String, String> logoutBuyer(HttpSession session) {
+//        Map<String, String> response = new HashMap<>();
+//
+//        // Retrieve email from the current session
+//        String email = (String) session.getAttribute("email");
+//
+//        if (email == null || email.isEmpty()) {
+//            response.put("status", "error");
+//            response.put("message", "No email found in session for logout.");
+//            return response;
+//        }
+//
+//        // Find and delete the session entry by email
+//        Optional<Session> sessionData = sessionRepo.findByEmail(email);
+//        if (sessionData.isPresent()) {
+//            sessionRepo.delete(sessionData.get());
+//            response.put("status", "success");
+//            response.put("message", "User logged out successfully.");
+//            response.put("redirect", "/buyer/login");  // Add redirect URL to response
+//        } else {
+//            response.put("status", "error");
+//            response.put("message", "No session found for the given email.");
+//        }
+//
+//        // Invalidate the current HTTP session
+//        session.invalidate();
+//
+//        return response;
+//    }
+
+
+
 
 
     
