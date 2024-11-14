@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Address Form</title>
     <style>
+        /* Existing styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -32,7 +33,7 @@
             font-weight: bold;
             color: #555;
         }
-        input[type="text"], input[type="tel"], textarea {
+        input[type="text"], input[type="tel"], textarea, input[type="number"] {
             width: 100%;
             padding: 8px;
             margin-bottom: 16px;
@@ -55,27 +56,73 @@
             background-color: #218838;
         }
     </style>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
-    <form action="/orders/submitAddress" method="post">
+    <form id="addressForm" action="/orders/submitAddress" method="post">
         <h2>Address Form</h2>
+        <!-- [Form Fields] -->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
-
         <label for="phone">Phone Number:</label>
         <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
-
         <label for="address">Address:</label>
         <textarea id="address" name="address" rows="4" cols="50" required></textarea>
-
         <label for="state">State:</label>
         <input type="text" id="state" name="state" required>
-
         <label for="zipcode">Zipcode:</label>
         <input type="number" id="zipcode" name="zipcode" required>
+        <input type="hidden" name="totalPrice" th:value="${totalPrice}">
 
-		<input type="hidden" name="totalPrice" th:value="${totalPrice}">
-        <input type="submit" value="go to payment">
+        <!-- Payment Method Selection -->
+        <label>
+            <input type="radio" name="paymentMethod" value="cod" checked> Cash on Delivery
+        </label>
+        <label>
+            <input type="radio" name="paymentMethod" value="online"> Online Payment
+        </label>
+
+        <input type="submit" value="Proceed to Payment">
     </form>
+
+    <script>
+        document.getElementById("addressForm").onsubmit = function(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const paymentMethod = formData.get("paymentMethod");
+
+            if (paymentMethod === "online") {
+                // Online Payment with Razorpay
+                const options = {
+                    "key": "rzp_test_37MbLXJMCUd3yL",
+                    "amount": formData.get("totalPrice") * 100,
+                    "currency": "INR",
+                    "name": "RevShop",
+                    "description": "Order Payment",
+                    "handler": function (response) {
+                        // On successful payment, submit the form with original data
+                        form.action = "/orders/submitAddress";
+                        form.method = "post";
+                        form.submit();
+                    },
+                    "prefill": {
+                        "name": formData.get("name"),
+                        "email": "test@example.com", // Replace with dynamic email if available
+                        "contact": formData.get("phone")
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                const rzp = new Razorpay(options);
+                rzp.open();
+            } else {
+                // For COD, submit the form directly
+                form.submit();
+            }
+        };
+    </script>
 </body>
 </html>
