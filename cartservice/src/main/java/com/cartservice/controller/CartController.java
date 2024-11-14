@@ -35,7 +35,7 @@ public class CartController {
 
     @PostMapping("/addToCart")
     public String addToCart(@RequestParam("productId") Long productId, @RequestParam("quantity") int quantity, HttpSession session) {
-		
+		//this part is not working
 		 //String email = (String) session.getAttribute("email"); 
     	//String email ="ssubash2651@gmail.com";
     	 Optional<Session> ses = sessionRepo.findById(1L);
