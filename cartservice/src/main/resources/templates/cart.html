@@ -401,7 +401,7 @@ td img {
     <p><strong>Total Amount: 
         <span th:text="${#numbers.formatDecimal((totalPrice - discount + deliveryCharges), 1, 2)}"></span></strong></p>
     
-    <form action="http://localhost:9090/orders/checkout" method="post">
+    <form action="/orders/checkout" method="post">
         <input type="hidden" name="totalPrice" th:value="${totalPrice} - ${discount} + ${deliveryCharges}" />
         <input type="hidden" name="userId" th:value="${userId}" />
         <button class="place-order-btn" type="submit">Place Order</button>

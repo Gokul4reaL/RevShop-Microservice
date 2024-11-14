@@ -55,11 +55,7 @@ public class OrderController {
 	public String handleCheckout(@RequestParam("totalPrice") double totalPrice,
 		
 			HttpSession session, Model model) {
-	    
-//	    String email = (String)session.getAttribute("email");
-//	    if (email == null) {
-//            return "redirect:/login";
-//        }
+
 		Optional<Session> ses = sessionRepo.findById(1L);
 		int value = ses.get().getValue();
 		String email = ses.get().getEmail();
@@ -67,6 +63,7 @@ public class OrderController {
 		{
 			return "redirect:http://localhost:9090/buyer/login";
 		}
+		
 	    model.addAttribute("totalPrice", totalPrice);
        // model.addAttribute("userId", userId);
         return "order-address";

@@ -1,8 +1,14 @@
 package com.sellerservice.controller;
 
 import com.sellerservice.model.Seller;
+import com.sellerservice.model.SellerSession;
+import com.sellerservice.repository.SellerSessionRepository;
 import com.sellerservice.service.SellerService;
+
 import jakarta.servlet.http.HttpSession;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +23,9 @@ public class SellerController {
 
     @Autowired
     private SellerService sellerService;
+    
+    @Autowired
+	private SellerSessionRepository sessionRepo;
 
     // -----------------------------------
     // 1. Seller Registration Endpoints
@@ -46,6 +55,14 @@ public class SellerController {
     @GetMapping("/sellerLogin")
     public String showLoginForm(Model model) {
         model.addAttribute("seller", new Seller());
+        Optional<SellerSession> ses = sessionRepo.findById(1L);
+        if(ses.isPresent())
+        {
+        	SellerSession sess = ses.get();
+        	sess.setValue(0);
+        	sess.setEmail("nil");
+            sessionRepo.save(sess);
+        }
         return "seller-login";  // Renders seller-login.html
     }
 
@@ -55,6 +72,20 @@ public class SellerController {
             Seller loggedInSeller = sellerService.findByemail(seller.getEmail());
             model.addAttribute("message", "Login successful!");
             session.setAttribute("loggedInSeller", loggedInSeller);  // Store seller in session
+            Optional<SellerSession> ses = sessionRepo.findById(1L);
+            if(ses.isPresent()) {
+                SellerSession sess = ses.get();
+                sess.setValue(1);
+                sess.setEmail(seller.getEmail());
+                System.out.println("Saving session to the database: " + sess);
+                sessionRepo.save(sess);
+            } else {
+                // If session record doesn't exist, create a new one
+                SellerSession newSession = new SellerSession();
+                newSession.setValue(1);
+                newSession.setEmail(seller.getEmail());
+                sessionRepo.save(newSession);
+            }
             return "seller-dashboard";  // Redirect to seller dashboard
         } else {
             model.addAttribute("errorMessage", "Invalid Email or Password");
@@ -69,7 +100,7 @@ public class SellerController {
     @GetMapping("/seller-dashboard")
     public String sellerDashboard(Model model,HttpSession session) {
         // Add additional attributes to the model if needed
-    	String email="ssubash2651@gmail.com";
+    	String email="gravekrishna@gmail.com";
     	
     	
     	Seller loggedInSeller = sellerService.findByemail(email);
