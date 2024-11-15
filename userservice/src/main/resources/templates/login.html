@@ -15,9 +15,7 @@
 
 	body {
 	    font-family: 'Arial', sans-serif;
-	    background: linear-gradient(-45deg, #f3e7e9, #e3eeff, #e8ffde, #ffdde1);
 	    background-size: 300% 300%;
-	    animation: backgroundSlide 15s ease infinite;
 	    display: flex;
 	    justify-content: center;
 	    align-items: center;
@@ -44,13 +42,10 @@
 	    transition: transform 0.3s;
 	}
 
-	.container:hover {
-	    transform: translateY(-5px);
-	    transition: transform 0.3s ease-in-out;
-	}
+	
 
 	.left-side {
-	    background-color: #4863A0;
+	    background-color: #f54955;
 	    color: white;
 	    padding: 50px;
 	    flex: 1;
@@ -63,7 +58,7 @@
 	    border-bottom-left-radius: 20px;
 	    transform-style: preserve-3d;
 	    perspective: 1000px;
-	    transition: transform 0.8s ease-in-out;
+	    
 	}
 
 	.container:hover .left-side {
@@ -75,35 +70,19 @@
 	    font-weight: bold;
 	    margin-bottom: 20px;
 	    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-	    animation: fadeIn 1s ease-in-out;
+	   
 	}
 	
 	.left-side p {
 	    font-size: 18px;
 	    margin-bottom: 30px;
 	    line-height: 1.5;
-	    animation: fadeIn 1.2s ease-in-out;
+	    
 	}
 
-	@keyframes fadeIn {
-	    0% { opacity: 0; transform: translateY(-20px); }
-	    100% { opacity: 1; transform: translateY(0); }
-	}
 
-	.welcome-image {
-	    margin-top: 30px;
-	    max-width: 80%; 
-	    height: auto;
-	    border-radius: 50%;
-	    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-	    transition: transform 0.5s ease, box-shadow 0.5s ease;
-	}
 
-	.welcome-image:hover {
-	    transform: rotate(15deg) scale(1.05);
-	    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-	}
-
+	
 	/* Right side form styling */
 	.right-side {
 	    padding: 50px;
@@ -115,13 +94,9 @@
 	    align-items: center;
 	    border-top-right-radius: 20px;
 	    border-bottom-right-radius: 20px;
-	    animation: slideIn 1.2s ease forwards;
+	    
 	}
 
-	@keyframes slideIn {
-	    0% { opacity: 0; transform: translateX(50px); }
-	    100% { opacity: 1; transform: translateX(0); }
-	}
 
 	.registration-form {
 	    width: 100%;
@@ -159,7 +134,7 @@
 	}
 
 	.input-group input:focus {
-	    border-color: #007bff;
+	    border-color: #f54955;
 	    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 	    transform: translateY(-3px);
 	    outline: none;
@@ -170,7 +145,7 @@
 	    display: none;
 	    margin-left: 10px;
 	    font-size: 14px;
-	    color: #007bff;
+	    color: #f54955;
 	    cursor: pointer;
 	    position: absolute;
 	    right: 10px;
@@ -185,7 +160,7 @@
 	/* Button styling */
 	button {
 	    padding: 15px;
-	    background-color: #728fce;
+	    background-color: #f54955;
 	    color: white;
 	    border: none;
 	    border-radius: 30px;
@@ -200,7 +175,7 @@
 	}
 
 	button:hover {
-	    background-color: #607dbf;
+	    background-color: #f54955;
 	    transform: translateY(-5px);
 	}
 
@@ -282,9 +257,9 @@
 <body>
     <div class="container">
         <div class="left-side">
-            <h1>Welcome Back to RevShop!</h1>
-            <p>Login to continue shopping with us!</p>
-            <img src="https://m.media-amazon.com/images/G/31/amazonservices/Becoming_an_online_seller.jpg" alt="Login Image" class="welcome-image">
+            <h1>Welcome To RevShop!</h1>
+            <p>Your One Stop Oneline Store</p>
+            <img src="../static/img/img1.png" alt="Login Image" class="welcome-image">
         </div>
         <div class="right-side" >
             <form class="login-form" th:action="@{/buyer/api/login-user}" method="post">

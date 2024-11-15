@@ -30,7 +30,7 @@ public class SellerController {
     // -----------------------------------
     // 1. Seller Registration Endpoints
     // -----------------------------------
-
+    
     @GetMapping("/sellerRegistration")
     public String showRegistrationForm(Model model) {
         model.addAttribute("seller", new Seller());
@@ -100,7 +100,7 @@ public class SellerController {
     @GetMapping("/seller-dashboard")
     public String sellerDashboard(Model model,HttpSession session) {
         // Add additional attributes to the model if needed
-    	String email="gravekrishna@gmail.com";
+    	String email="ssubash2651@gmail.com";
     	
     	
     	Seller loggedInSeller = sellerService.findByemail(email);

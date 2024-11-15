@@ -9,7 +9,7 @@ body {
 
 /* Sidebar Styling */
 .sidebar {
-    background: linear-gradient(45deg, #4863A0, #4863A0);
+    background: #f54955;
     color: #fff;
     padding-top: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
@@ -268,7 +268,7 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #4880EC;
+    background-color: #f54955;
     display: flex;
     align-items: center;
     justify-content: center;
