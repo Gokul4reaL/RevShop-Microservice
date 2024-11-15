@@ -4,8 +4,6 @@ package com.cartservice.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
-
-
 	@Entity
 	@Table(name = "seller")
 	public class Seller {

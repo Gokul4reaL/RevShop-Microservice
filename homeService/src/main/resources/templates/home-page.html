@@ -21,7 +21,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #4863A0;
+            background-color: #f54958;
             padding: 20px 30px;
             position: sticky;
             top: 0;
@@ -36,19 +36,20 @@
             margin: 0;
         }
 
-        .search-bar {
+       /* .search-bar {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 10px 20px;
+			
         }
 
         .search-bar input {
             width: 80%; 
             padding: 12px;
-            border: 2px solid #4863A0; 
-            border-radius: 4px 0 0 4px;
+            border: 2px solid #fcfafa; 
+            border-radius: 10px 10px 10px 10px;
             font-size: 18px;
             outline: none;
             transition: border-color 0.3s ease;
@@ -60,10 +61,10 @@
 
         .search-bar button {
             padding: 12px;
-            background-color: #4863A0;
+            background-color: #857677;
             border: none;
             color: white;
-            border-radius: 0 4px 4px 0;
+            border-radius: 0px 14px 14px 0px;
             cursor: pointer;
         }
 
@@ -71,7 +72,7 @@
             color: white;
             font-size: 20px;
         }
-
+*/
         .nav-links {
             display: flex;
             list-style: none;
@@ -87,7 +88,19 @@
             text-decoration: none;
             font-size: 18px;
         }
-
+		#user-dropdown .dropdown-content {
+			background-color: white;
+			border-radius: 18px; 
+			}
+		#user-dropdown .dropdown-content a {
+		    color: #f54958;
+		    padding: 10px 16px;
+		    text-decoration: none;
+		    display: block;
+			background-color: white;
+			justify-content: center;
+			
+		}
         .nav-links a i {
             margin-right: 8px;
         }
@@ -115,7 +128,7 @@
 
         .logout-home button:hover {
             background-color: white;
-            color: #4863A0;
+            color: #f54958;
         }
 
         /* Carousel Styling */
@@ -126,7 +139,7 @@
 
         /* Footer Styling */
         footer {
-            background-color: #4863A0;
+            background-color: #f54958;
             color: white;
             padding: 40px 0;
         }
@@ -157,7 +170,7 @@
                 position: absolute;
                 top: 60px;
                 right: 0;
-                background-color: #4863A0;
+                background-color: #f54958;
                 width: 100%;
                 text-align: right;
             }
@@ -186,24 +199,24 @@
     <div class="logo">
         <h2>RevShop</h2>
     </div>
-    <div class="search-bar">
+   <!-- <div class="search-bar">
         <form th:action="@{/api/searchall}" method="get">
             <input type="text" name="query" placeholder="Search for products..." required>
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
-    </div>
+    </div>-->
     <ul class="nav-links">
         <li class="dropdown" id="user-dropdown">
             <a href="#" class="dropbtn"><i class="fas fa-user"></i></a>
             <div class="dropdown-content">
-                <a th:href="@{/buyer/registration}">New Customer? Sign Up</a>
+                <a th:href="@{/buyer/registration}"> Sign Up</a>
 <!--                 <a th:href="@{/profile}">My Profile</a> -->
 <!--                 <a th:href="@{/orders/viewOrders}">My Orders</a> -->
             </div>
         </li>
-        <li><a th:href="@{/buyer/login}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-        <li><a th:href="@{/buyer/login}"><i class="fas fa-heart"></i> Wishlist</a></li>
-        <li><a th:href="@{/seller/sellerRegistration}"><i class="fas fa-store"></i> Become a Seller</a></li>
+        <li><a th:href="@{/buyer/login}"><i class="fas fa-shopping-cart"></i>MyCart</a></li>
+        <li><a th:href="@{/buyer/login}"><i class="fas fa-heart"></i>Wishlist</a></li>
+        <li><a th:href="@{/seller/sellerRegistration}"><i class="fas fa-store"></i> Sign in as Vendor</a></li>
         <li class="logout-home">
          <!--    <button onclick="window.location.href='/home'">Home</button> -->
             <button onclick="window.location.href='/buyer/login'">Login</button>
@@ -214,6 +227,16 @@
     </div>
 </nav>
 
+<!-- Carousel wrapper -->
+<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+ 
 <!-- Carousel Section -->
 <div class="carousel slide pt-5" id="carouselExampleIndicators" data-ride="carousel">
     <div class="carousel-inner">
@@ -242,7 +265,7 @@
 <!-- Featured Products Section -->
 <section class="featured-products">
     <div class="container">
-    <h2 class="text-center mb-4">WELCOME TO REVSHOP</h2>
+    
         <div class="row">
             <div class="col-md-3 col-sm-6 mb-4" th:each="product : ${featuredProducts}">
                 <div class="card shadow-lg">
@@ -250,7 +273,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title" th:text="${product.name}"></h5>
                         <p class="card-text" th:text="${product.price}"></p>
-                        <a th:href="@{/api/product/details/{id}(id=${product.productId})}" class="btn btn-custom">View Details</a>
+                        <a th:href="@{/pro/product/details/{id}(id=${product.productId})}" class="btn btn-custom">View Details</a>
                     </div>
                 </div>
             </div>
@@ -258,41 +281,15 @@
     </div>
 </section>
 
-<!-- Modal Structure -->
-<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="productModalLabel">Product Title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <img src="" id="modalProductImg" class="img-fluid mb-3" alt="Product Image">
-                <p id="modalProductDescription"></p>
-                <p id="modalProductPrice" class="font-weight-bold"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-custom">
-                    <i class="fas fa-cart-plus"></i> Add to Cart
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Footer -->
-<footer class="text-center text-lg-start text-white" style="background-color: #4863A0;">
+<footer class="text-center text-lg-start text-white" style="background-color: #f54955">
     <div class="p-4 pb-0">
         <section class="">
             <div class="row">
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold text-white">Company name</h6>
                     <p class="text-white">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        REVSHOP
                     </p>
                 </div>
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
@@ -305,13 +302,13 @@
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold text-white">Useful links</h6>
                     <p><a href="#" class="text-white">Your Account</a></p>
-                    <p><a href="#" class="text-white">Become a Seller</a></p>
+                    <p><a href="#" class="text-white">Become a Vendor</a></p>
                     <p><a href="#" class="text-white">Shipping Rates</a></p>
                     <p><a href="#" class="text-white">Help</a></p>
                 </div>
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold text-white">Contact</h6>
-                    <p class="text-white"><i class="fas fa-home mr-3 text-white"></i> WorkaFella, Revature Teynampet</p>
+                    <p class="text-white"><i class="fas fa-home mr-3 text-white"></i> WorkaFella,Teynampet</p>
                     <p class="text-white"><i class="fas fa-envelope mr-3 text-white"></i> revature@gmail.com</p>
                     <p class="text-white"><i class="fas fa-phone mr-3 text-white"></i> +01 234 567 88</p>
                     <p class="text-white"><i class="fas fa-print mr-3 text-white"></i> +01 234 567 89</p>

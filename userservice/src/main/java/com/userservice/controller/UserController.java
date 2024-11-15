@@ -124,6 +124,7 @@ public class UserController {
                 } else {
                 	response.put("status", "error");
                     response.put("message", "Please register to login.");
+                  //  response.put("redirect", "/buyer/login");
                     return response;
                 }
             } else {
@@ -162,7 +163,7 @@ public class UserController {
                 return "user-profile";
             }
         }
-        return "redirect:/login";  // Redirect to login if email is not found
+        return "redirect:/buyer/login";  // Redirect to login if email is not found endpoint updated
     }
 
 

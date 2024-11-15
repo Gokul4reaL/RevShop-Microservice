@@ -14,7 +14,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #4863A0;
+            background-color: #f54955;
             padding: 20px 30px;
             position: sticky;
             top: 0;
@@ -29,41 +29,7 @@
             margin: 0;
         }
 
-        .search-bar {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .search-bar input {
-            width: 80%; 
-            padding: 12px;
-            border: 2px solid #4863A0; 
-            border-radius: 4px 0 0 4px;
-            font-size: 18px;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .search-bar input:focus {
-            border-color: #333;
-        }
-
-        .search-bar button {
-            padding: 12px;
-            background-color: #4863A0;
-            border: none;
-            color: white;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-        }
-
-        .search-bar button i {
-            color: white;
-            font-size: 20px;
-        }
+        
 
         .nav-links {
             display: flex;
@@ -102,7 +68,7 @@
 
         .logout-home button:hover {
             background-color: white;
-            color: #4863A0;
+            color: #f54955;
         }
         
     </style>
@@ -112,21 +78,21 @@
     <div class="logo">
         <h2>RevShop</h2>
     </div>
-    <div class="search-bar">
+    <!--<div class="search-bar">
         <form th:action="@{/api/searchall}" method="get">
             <input type="text" name="query" placeholder="Search for products..." required>
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
-    </div>
+    </div>-->
     <ul class="nav-links">
         <li class="dropdown" id="user-dropdown">
            
         </li>
-        <li><a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-        <li><a th:href="@{/wishlist}"><i class="fas fa-heart"></i> Wishlist</a></li>
-        <li><a th:href="@{/sellerRegistration}"><i class="fas fa-store"></i> Become a Seller</a></li>
+        <li><a th:href="@{/cart/viewCart}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        <li><a th:href="@{/wish/wishlist}"><i class="fas fa-heart"></i> Wishlist</a></li>
+        <li><a th:href="@{/seller/sellerRegistration}"><i class="fas fa-store"></i> Become a Seller</a></li>
         <li class="logout-home">
-            <button onclick="window.location.href='/api/buyerhome'">Home</button>
+            <button onclick="window.location.href='/pro/home'">Home</button>
             <button onclick="window.location.href='/buyer/login'">Logout</button>
         </li>
     </ul>

@@ -15,9 +15,7 @@
 
 	body {
 	    font-family: 'Arial', sans-serif;
-	    background: linear-gradient(-45deg, #f3e7e9, #e3eeff, #e8ffde, #ffdde1);
 	    background-size: 300% 300%;
-	    animation: backgroundSlide 15s ease infinite;
 	    display: flex;
 	    justify-content: center;
 	    align-items: center;
@@ -26,11 +24,7 @@
 	    overflow: hidden;
 	}
 
-	@keyframes backgroundSlide {
-	    0% { background-position: 0% 50%; }
-	    50% { background-position: 100% 50%; }
-	    100% { background-position: 0% 50%; }
-	}
+	
 
 	/* Main container styling */
 	.container {
@@ -41,16 +35,13 @@
 	    width: 90%;
 	    max-width: 1000px;
 	    overflow: hidden;
-	    transition: transform 0.3s;
+	    
 	}
 
-	.container:hover {
-	    transform: translateY(-5px);
-	    transition: transform 0.3s ease-in-out;
-	}
+	
 
 	.left-side {
-	    background-color: #4863A0;
+	    background-color: #f54955;
 	    color: white;
 	    padding: 50px;
 	    flex: 1;
@@ -63,19 +54,17 @@
 	    border-bottom-left-radius: 20px;
 	    transform-style: preserve-3d;
 	    perspective: 1000px;
-	    transition: transform 0.8s ease-in-out;
+	    
 	}
 
-	.container:hover .left-side {
-	    transform: rotateY(10deg);
-	}
+	
 
 	.left-side h1 {
 	    font-size: 38px;
 	    font-weight: bold;
 	    margin-bottom: 20px;
 	    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-	    animation: fadeIn 1s ease-in-out;
+	  
 	}
 
 	.left-side p {
@@ -85,22 +74,19 @@
 	    animation: fadeIn 1.2s ease-in-out;
 	}
 
-	@keyframes fadeIn {
-	    0% { opacity: 0; transform: translateY(-20px); }
-	    100% { opacity: 1; transform: translateY(0); }
-	}
+	
 
 	.welcome-image {
 	    margin-top: 30px;
 	    max-width: 80%; 
 	    height: auto;
-	    border-radius: 50%;
+	    border-radius: 0;
 	    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-	    transition: transform 0.5s ease, box-shadow 0.5s ease;
+	
 	}
 
 	.welcome-image:hover {
-	    transform: rotate(15deg) scale(1.05);
+	    
 	    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 	}
 
@@ -115,28 +101,20 @@
 	    align-items: center;
 	    border-top-right-radius: 20px;
 	    border-bottom-right-radius: 20px;
-	    animation: slideIn 1.2s ease forwards;
+	   
 	}
 
-	@keyframes slideIn {
-	    0% { opacity: 0; transform: translateX(50px); }
-	    100% { opacity: 1; transform: translateX(0); }
-	}
+	
 
 	.registration-form {
 	    width: 100%;
 	    max-width: 400px;
 	    display: flex;
 	    flex-direction: column;
-	    transform: translateY(0);
-	    animation: floatForm 5s ease-in-out infinite;
+	    
 	}
 
-	@keyframes floatForm {
-	    0%, 100% { transform: translateY(0); }
-	    50% { transform: translateY(-5px); }
-	}
-
+	
 	.registration-form h2 {
 	    margin-bottom: 25px;
 	    font-size: 28px;
@@ -159,8 +137,8 @@
 	}
 
 	.input-group input:focus {
-	    border-color: #007bff;
-	    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+	    border-color: #f54955;
+	    box-shadow: 0 0 8px #827a7b;
 	    transform: translateY(-3px);
 	    outline: none;
 	}
@@ -170,7 +148,7 @@
 	    display: none;
 	    margin-left: 10px;
 	    font-size: 14px;
-	    color: #007bff;
+	    color: #f54955;
 	    cursor: pointer;
 	    position: absolute;
 	    right: 10px;
@@ -185,7 +163,7 @@
 	/* Button styling */
 	button {
 	    padding: 15px;
-	    background-color: #728fce;
+	    background-color: #827a7b;
 	    color: white;
 	    border: none;
 	    border-radius: 30px;
@@ -193,15 +171,15 @@
 	    font-size: 18px;
 	    width: 100%;
 	    transition: background-color 0.3s, transform 0.2s;
-	    box-shadow: 0 5px 15px rgba(225, 101, 57, 0.3);
+	    box-shadow: 0 5px 15px #827a7b;
 	    position: relative;
 	    overflow: hidden;
 	    outline: none;
 	}
 
 	button:hover {
-	    background-color: #607dbf;
-	    transform: translateY(-5px);
+	    background-color: #827a7b;
+	    transform: translateY(-2px);
 	}
 
 	button::after {
@@ -231,7 +209,7 @@
 
 	/* Resend OTP styling */
 	.resend-otp-btn {
-	    background-color: #007bff;
+	    background-color: #827a7b;
 	    color: white;
 	    border: none;
 	    padding: 10px 20px;
@@ -241,7 +219,7 @@
 	}
 
 	.resend-otp-btn:hover {
-	    background-color: #0056b3;
+	    background-color: #827a7b;
 	}
 
 	/* Message section styling */
@@ -253,7 +231,7 @@
 	}
 
 	.message a {
-	    color: #007bff;
+	    color: #827a7b;
 	    text-decoration: none;
 	}
 
@@ -284,7 +262,7 @@
     <div class="container">
         <div class="left-side">
             <h1>Welcome to RevShop!</h1>
-            <p>Create your account and start shopping with us today!</p>
+            <p>Get started with us</p>
             <img src="https://m.media-amazon.com/images/G/31/amazonservices/Becoming_an_online_seller.jpg" alt="Welcome Image" class="welcome-image">
         </div>
         <div class="right-side">
