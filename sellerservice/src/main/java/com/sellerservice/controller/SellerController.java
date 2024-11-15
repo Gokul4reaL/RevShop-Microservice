@@ -30,7 +30,7 @@ public class SellerController {
     // -----------------------------------
     // 1. Seller Registration Endpoints
     // -----------------------------------
-
+    
     @GetMapping("/sellerRegistration")
     public String showRegistrationForm(Model model) {
         model.addAttribute("seller", new Seller());

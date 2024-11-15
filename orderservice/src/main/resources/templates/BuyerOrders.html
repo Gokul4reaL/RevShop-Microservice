@@ -43,7 +43,7 @@
         }
 
         th {
-            background-color: #4863A0;
+            background-color: #f54955;
             color: white;
             font-weight: bold;
             text-transform: uppercase;
@@ -84,13 +84,13 @@
         }
 
         .button:hover {
-            background-color: #0056b3;
+            background-color: #f54955;
             transform: scale(1.05);
         }
 
         /* Table border styles */
         table {
-            border: 2px solid #007bff;
+            border: 2px solid #f54955;
             border-radius: 12px;
             overflow: hidden;
         }
@@ -112,7 +112,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #4863A0;
+            background-color: #f54955;
             padding: 20px 30px;
             position: sticky;
             top: 0;
@@ -216,10 +216,12 @@
         
         <li><a th:href="@{/cart/viewCart}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         <li><a th:href="@{/wish/wishlist}"><i class="fas fa-heart"></i> Wishlist</a></li>
-        <li><a th:href="@{/seller/sellerRegistration}"><i class="fas fa-store"></i> Become a Seller</a></li>
+      <!--  <li><a th:href="@{/seller/sellerRegistration}"><i class="fas fa-store"></i> Become a Seller</a></li>-->
         <li class="logout-home">
-            <button onclick="window.location.href='/api/buyerhome'">Home</button>
-            <button onclick="window.location.href='/buyer/login'">Logout</button>
+			<li><a th:href="@{/pro/home}"> Home</a></li>
+			      <li><a th:href="@{/buyer/login}"> Logout</a></li>
+        <!--      <button onclick="window.location.href='/pro/home'">Home</button>
+            <button onclick="window.location.href='/buyer/login'">Logout</button>-->
         </li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">

@@ -12,299 +12,428 @@
     margin: 0;
     padding: 0;
 }
-/*
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fa;
-    display: flex;
-    height: 100vh;
-    overflow-x: hidden;
-}
-
-
-.sidebar {
-    width: 250px;
-    background-color: #343a40;
+/* Navbar styling */
+.navbar {
+	padding:10px;
+    width: 100%;
+    background-color: #f54955;
     color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    padding: 20px;
-    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100; 
-    transition: width 0.3s ease;
-    overflow-y: auto;
+    z-index: 100;
 }
 
-.sidebar h3 {
-    font-size: 20px;
-    color: white;
+.navbar .profile-section {
+    display: flex;
+    align-items: center;
 }
 
-.sidebar .profile-section {
-    text-align: center;
-    padding-bottom: 20px;
-}
-
-.sidebar .profile-pic {
+.profile-pic {
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
 }
 
-.sidebar-menu {
+.navbar h3 {
+    font-size: 16px;
+}
+
+.navbar-menu {
     list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
 }
 
 .menu-item {
-    margin-bottom: 15px;
     position: relative;
 }
 
 .menu-item a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
+    font-size: 16px;
+    padding: 8px;
     transition: background-color 0.3s ease;
 }
 
 .menu-item a:hover {
     background-color: #212735;
+    border-radius: 5px;
 }
 
-.dropdown-btn {
-    cursor: pointer;
-}
-
+/* Dropdown styling */
 .dropdown-content {
     display: none;
-    padding-left: 20px;
+    position: absolute;
+    background-color: #343a40;
+    padding: 5px 0; /* Reduced padding to ensure no gap */
+    border-radius: 5px;
+    top: 100%; /* Positions dropdown directly below the button */
+    left: 0;
+    min-width: 150px;
 }
 
 .dropdown-content a {
-    font-size: 16px;
-    padding: 8px 10px;
-}
-
-.menu-item:hover .dropdown-content {
-    display: block;
-}
-
-
-.main-content {
-    margin-left: 260px; 
-    padding: 20px;
-    width: calc(100% - 260px); 
-    transition: margin-left 0.3s ease;
-}
-
-.dashboard-overview {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.large-card {
-    grid-column: span 2;
-}
-
-.order-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.order-table th, .order-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-.order-table th {
-    background-color: #f2f2f2;
-}
-
-.order-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.add-product-form {
-    margin-left: 260px;
-    padding: 20px;
-    width: calc(100% - 260px);
-}
-
-.add-product-btn {
-    background-color: #343a40;
     color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.add-product-btn:hover {
-    background-color: #212735;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-group input, .form-group textarea, .form-group select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-.profile-section h3 span {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.manage-inventory {
-    margin-left: 260px; 
-    padding: 20px;
-    width: calc(100% - 260px); 
+    font-size: 14px;
+    padding: 10px 15px; /* Extra padding for easy hover */
     display: block;
 }
 
-.product-image {
-    width: 50px; 
-    height: auto;
+/* Keep dropdown open on hover */
+.menu-item:hover .dropdown-content,
+.menu-item:focus-within .dropdown-content {
+    display: block;
 }
-    */
-	
-	/* Navbar styling */
-	.navbar {
-	    width: 100%;
-	    background-color: #343a40;
-	    color: white;
-	    display: flex;
-	    align-items: center;
-	    justify-content: space-between;
-	    padding: 10px 20px;
-	    position: fixed;
-	    top: 0;
-	    left: 0;
-	    z-index: 100;
-	}
 
-	.navbar .profile-section {
-	    display: flex;
-	    align-items: center;
-	}
-
-	.profile-pic {
-	    border-radius: 50%;
-	    width: 40px;
-	    height: 40px;
-	    margin-right: 10px;
-	}
-
-	.navbar h3 {
-	    font-size: 16px;
-	}
-
-	.navbar-menu {
-	    list-style-type: none;
-	    display: flex;
-	    align-items: center;
-	    gap: 20px;
-	    margin: 0;
-	}
-
-	.menu-item {
-	    position: relative;
-	}
-
-	.menu-item a {
-	    color: white;
-	    text-decoration: none;
-	    font-size: 16px;
-	    padding: 8px;
-	    transition: background-color 0.3s ease;
-	}
-
-	.menu-item a:hover {
-	    background-color: #212735;
-	    border-radius: 5px;
-	}
-
-	.dropdown-content {
-	    display: none;
-	    position: absolute;
-	    background-color: #343a40;
-	    padding: 10px;
-	    border-radius: 5px;
-	    top: 35px;
-	    left: 0;
-	}
-
-	.dropdown-content a {
-	    color: white;
-	    font-size: 14px;
-	    padding: 8px;
-	    display: block;
-	}
-
-	.menu-item:hover .dropdown-content {
-	    display: block;
-	}
-
-	/* Adjust main content area */
-	.main-content {
-	    margin-top: 80px; /* To make room for the fixed navbar */
-	    padding: 20px;
-	}
-/*css for grid*/
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Creates four equal columns */
-    grid-template-rows: repeat(4, 1fr);    /* Creates four equal rows */
-    gap: 100px; /* Space between grid items */
+/* Adjust main content area */
+.main-content {
+    margin-top: 80px; /* To make room for the fixed navbar */
     padding: 20px;
 }
 
-.image-item {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%; /* Maintains a square aspect ratio */
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f2f2f2;
+
+/*userdashboard*/
+* Main CSS Here */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --background-color1: #fafaff;
+  --background-color2: #ffffff;
+  --background-color3: #ededed;
+  --background-color4: #cad7fda4;
+  --primary-color: #4b49ac;
+  --secondary-color: #0c007d;
+  --Border-color: #3f0097;
+  --one-use-color: #3f0097;
+  --two-use-color: #5500cb;
+}
+body {
+  background-color: var(--background-color4);
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-.image-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures images cover the full container without stretching */
-    border-radius: 8px;
+header {
+  height: 70px;
+  width: 100vw;
+  padding: 0 30px;
+  background-color: var(--background-color1);
+  position: fixed;
+  z-index: 100;
+  box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 600;
+  color: rgb(47, 141, 70);
+}
+
+.icn {
+  height: 30px;
+}
+.menuicn {
+  cursor: pointer;
+}
+
+.searchbar,
+.message,
+.logosec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbar2 {
+  display: none;
+}
+
+.logosec {
+  gap: 60px;
+}
+
+.searchbar input {
+  width: 250px;
+  height: 42px;
+  border-radius: 50px 0 0 50px;
+  background-color: var(--background-color3);
+  padding: 0 20px;
+  font-size: 15px;
+  outline: none;
+  border: none;
+}
+.searchbtn {
+  width: 50px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px 50px 50px 0px;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.message {
+  gap: 40px;
+  position: relative;
+  cursor: pointer;
+}
+.circle {
+  height: 7px;
+  width: 7px;
+  position: absolute;
+  background-color: #fa7bb4;
+  border-radius: 50%;
+  left: 19px;
+  top: 8px;
+}
+.dp {
+  height: 40px;
+  width: 40px;
+  background-color: #626262;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.main-container {
+  display: flex;
+  width: 100vw;
+  position: relative;
+  top: 70px;
+  z-index: 1;
+}
+.dpicn {
+  height: 42px;
+}
+
+.main {
+  height: calc(100vh - 70px);
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 40px 30px 30px 30px;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background-image: 
+        linear-gradient(to bottom, rgb(0, 0, 85), rgb(0, 0, 50));
+}
+.main::-webkit-scrollbar {
+  width: 5px;
+}
+.main::-webkit-scrollbar-track {
+  background-color: #9e9e9eb2;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.nav {
+  min-height: 91vh;
+  width: 250px;
+  background-color: var(--background-color2);
+  position: absolute;
+  top: 0px;
+  left: 00;
+  box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 30px 0 20px 10px;
+}
+.navcontainer {
+  height: calc(100vh - 70px);
+  width: 250px;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.navcontainer::-webkit-scrollbar {
+  display: none;
+}
+.navclose {
+  width: 80px;
+}
+.nav-option {
+  width: 250px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px 0 20px;
+  gap: 20px;
+  transition: all 0.1s ease-in-out;
+}
+.nav-option:hover {
+  border-left: 5px solid #a2a2a2;
+  background-color: #dadada;
+  cursor: pointer;
+}
+.nav-img {
+  height: 30px;
+}
+
+.nav-upper-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.option1 {
+  border-left: 5px solid #010058af;
+  background-color: var(--Border-color);
+  color: white;
+  cursor: pointer;
+}
+.option1:hover {
+  border-left: 5px solid #010058af;
+  background-color: var(--Border-color);
+}
+.box {
+  height: 130px;
+  width: 230px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+.box:hover {
+  transform: scale(1.08);
+}
+
+.box:nth-child(1) {
+  background-color: var(--one-use-color);
+}
+.box:nth-child(2) {
+  background-color: var(--two-use-color);
+}
+.box:nth-child(3) {
+  background-color: var(--one-use-color);
+}
+.box:nth-child(4) {
+  background-color: var(--two-use-color);
+}
+
+.box img {
+  height: 50px;
+}
+.box .text {
+  color: white;
+}
+.topic {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.topic-heading {
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+
+.report-container {
+  min-height: 300px;
+  max-width: 1200px;
+  margin: 70px auto 0px auto;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  padding: 0px 20px 20px 20px;
+}
+.report-header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 2px solid rgba(0, 20, 151, 0.59);
+}
+
+.recent-Articles {
+  font-size: 30px;
+  font-weight: 600;
+  color: #5500cb;
+}
+
+.view {
+  height: 35px;
+  width: 90px;
+  border-radius: 8px;
+  background-color: #5500cb;
+  color: white;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.report-body {
+  max-width: 1160px;
+  overflow-x: auto;
+  padding: 20px;
+}
+.report-topic-heading,
+.item1 {
+  width: 1120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.t-op {
+  font-size: 18px;
+  letter-spacing: 0px;
+}
+
+.items {
+  width: 1120px;
+  margin-top: 15px;
+}
+
+.item1 {
+  margin-top: 20px;
+}
+.t-op-nextlvl {
+  font-size: 14px;
+  letter-spacing: 0px;
+  font-weight: 600;
+}
+
+.label-tag {
+  width: 100px;
+  text-align: center;
+  background-color: rgb(0, 177, 0);
+  color: white;
+  border-radius: 4px;
 }
 
 	</style>
@@ -312,96 +441,6 @@ body {
 <body>
 	
 
-	
-	
-    <!--<div class="container">
-	
-         Sidebar 
-        <div class="sidebar">
-            <div class="profile-section">
-                <img th:src="${session.loggedInSeller.image}" alt="Profile Picture" class="profile-pic">
-                 <h3>Hello, <span th:text="${session.loggedInSeller.firstName}"></span></h3>
-                
-            </div>
-            <ul class="sidebar-menu">
-                <li class="menu-item"><a th:href="@{/seller/seller-dashboard}">Dashboard</a></li>
-                <li class="menu-item dropdown">
-                    <a href="#" class="dropdown-btn">Inventory</a>
-                    <ul class="dropdown-content">
-                        <li><a th:href="@{/pro/add-product}">Add Products</a></li>
-                       <li><a th:href="@{/pro/display-products(sellerId=${session.loggedInSeller.sellerId})}">Manage Inventory</a></li>  Manage Inventory Link 
-                       
-                    </ul>
-                </li>
-                <li class="menu-item"><a href="http://localhost:9090/orders/viewSellerOrders">Orders</a></li>
-                 <li class="menu-item"><a href="#">Reviews</a></li> 
-                 <li class="menu-item"><a href="#">Wishlist</a></li> 
-                <li class="menu-item"><a th:href="@{/api/home}">Logout</a></li>
-            </ul>
-        </div>
-
-         Main Content 
-        <div class="main-content" id="dashboard-content">
-            <h1>Seller Dashboard</h1>
-             Dashboard Overview Section 
-            <div class="dashboard-overview">
-                <div class="card large-card">
-                    <h3>Total Sales</h3>
-                    <p>$12,500</p>
-                    <div class="mini-chart" id="sales-chart"></div>
-                </div>
-                <div class="card">
-                    <h3>Total Orders</h3>
-                    <p>320</p>
-                </div>
-                <div class="card">
-                    <h3>Top-Selling Product</h3>
-                    <p>Wireless Earbuds</p>
-                </div>
-                <div class="card">
-                    <h3>Pending Orders</h3>
-                    <p>10</p>
-                </div>
-                <div class="card">
-                    <h3>Low Stock Products</h3>
-                    <p>3 items</p>
-                </div>
-            </div>
-
-             Recent Orders Section 
-            <h2>Recent Orders</h2>
-            <table class="order-table">
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Product</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#1245</td>
-                        <td>Bluetooth Headphones</td>
-                        <td>2024-09-26</td>
-                        <td>Delivered</td>
-                        <td>$150</td>
-                    </tr>
-                    <tr>
-                        <td>#1244</td>
-                        <td>Smartphone</td>
-                        <td>2024-09-25</td>
-                        <td>Processing</td>
-                        <td>$900</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        
-        
-    </div>-->
 	
 	<body>
 	    <!-- Navbar -->
@@ -419,34 +458,64 @@ body {
 	                    <li><a th:href="@{/pro/display-products(sellerId=${session.loggedInSeller.sellerId})}">Manage Inventory</a></li>
 	                </ul>
 	            </li>
-	            <li class="menu-item"><a href="http://localhost:9090/orders/viewSellerOrders">Orders</a></li>
+	           <!-- <li class="menu-item"><a href="http://localhost:9090/orders/viewSellerOrders">Orders</a></li>-->
 	            <li class="menu-item"><a th:href="@{/api/home}">Logout</a></li>
 	        </ul>
 	    </div>
 
-	    <!-- Main Content -->
-	    <div class="main-content container m-5" id="dashboard-content">
-			<div class="image-grid">
-			    <div class="image-item"><img src="../static/img/Accessories.jpg" alt="Image 1"></div>
-			    <div class="image-item"><img src="path-to-image2.jpg" alt="Image 2"></div>
-			    <div class="image-item"><img src="path-to-image3.jpg" alt="Image 3"></div>
-			    <div class="image-item"><img src="path-to-image4.jpg" alt="Image 4"></div>
-			    <div class="image-item"><img src="path-to-image5.jpg" alt="Image 5"></div>
-			    <div class="image-item"><img src="path-to-image6.jpg" alt="Image 6"></div>
-			    <div class="image-item"><img src="path-to-image7.jpg" alt="Image 7"></div>
-			    <div class="image-item"><img src="path-to-image8.jpg" alt="Image 8"></div>
-			    <div class="image-item"><img src="path-to-image9.jpg" alt="Image 9"></div>
-			    <div class="image-item"><img src="path-to-image10.jpg" alt="Image 10"></div>
-			    <div class="image-item"><img src="path-to-image11.jpg" alt="Image 11"></div>
-			    <div class="image-item"><img src="path-to-image12.jpg" alt="Image 12"></div>
-			    <div class="image-item"><img src="path-to-image13.jpg" alt="Image 13"></div>
-			    <div class="image-item"><img src="path-to-image14.jpg" alt="Image 14"></div>
-			    <div class="image-item"><img src="path-to-image15.jpg" alt="Image 15"></div>
-			    <div class="image-item"><img src="path-to-image16.jpg" alt="Image 16"></div>
-			</div>
+		<div class="report-container">
+		    <div class="report-header">
+		        <h1 class="recent-Articles">Recent Orders</h1>
+		        <a class="view text-decoration-none" th:href="@{/orders/viewOrders}">View All</a></button>
+		    </div>
 
-	    </div>
-	</body>
+		    <div class="report-body">
+		        <div class="report-topic-heading">
+		            <h3 class="t-op">Order ID</h3>
+		            <h3 class="t-op">Items</h3>
+		            <h3 class="t-op">Amount</h3>
+		            <h3 class="t-op">Status</h3>
+		        </div>
+
+		        <div class="items">
+		            <div class="item1">
+		                <h3 class="t-op-nextlvl">#10234</h3>
+		                <h3 class="t-op-nextlvl">5 Items</h3>
+		                <h3 class="t-op-nextlvl">$250.00</h3>
+		                <h3 class="t-op-nextlvl label-tag">Shipped</h3>
+		            </div>
+
+		            <div class="item1">
+		                <h3 class="t-op-nextlvl">#10233</h3>
+		                <h3 class="t-op-nextlvl">2 Items</h3>
+		                <h3 class="t-op-nextlvl">$85.00</h3>
+		                <h3 class="t-op-nextlvl label-tag" style="background-color: orange;">Processing</h3>
+		            </div>
+
+		            <div class="item1">
+		                <h3 class="t-op-nextlvl">#10232</h3>
+		                <h3 class="t-op-nextlvl">3 Items</h3>
+		                <h3 class="t-op-nextlvl">$150.00</h3>
+		                <h3 class="t-op-nextlvl label-tag" style="background-color: green;">Delivered</h3>
+		            </div>
+
+		            <div class="item1">
+		                <h3 class="t-op-nextlvl">#10231</h3>
+		                <h3 class="t-op-nextlvl">1 Item</h3>
+		                <h3 class="t-op-nextlvl">$50.00</h3>
+		                <h3 class="t-op-nextlvl label-tag" style="background-color: red;">Canceled</h3>
+		            </div>
+
+		            <div class="item1">
+		                <h3 class="t-op-nextlvl">#10230</h3>
+		                <h3 class="t-op-nextlvl">4 Items</h3>
+		                <h3 class="t-op-nextlvl">$120.00</h3>
+		                <h3 class="t-op-nextlvl label-tag">Shipped</h3>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
 
 </body>
 </html>
